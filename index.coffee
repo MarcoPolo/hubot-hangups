@@ -32,7 +32,6 @@ class HangoutsAdapter extends Adapter
         userId:user.user.options.userId,
         message:message
       }
-      response.message = response.fullName + ': ' + response.message
 
       options = {
         url:"http://localhost:#{port}/proxy/",
@@ -46,7 +45,7 @@ class HangoutsAdapter extends Adapter
       @send user, strings...
 
   reply: (user, strings...) ->
-    @send user, strings.map((str) -> "#{user.user}: #{str}")...
+    @send user, strings.map((str) -> "#{user.user.name}: #{str}")...
 
   run: ->
     pythonPath = process.env.HUBOT_HANGUPS_PYTHON
